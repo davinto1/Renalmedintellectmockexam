@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b4f6c" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Renal Exam" />
+  <meta name="description" content="MEDINTELECT Academy - Renal Physiology Mock Exam. Practice MCQs, short answers, high-probability questions and AOC essays with progress tracking." />
+  <title>Renal Physiology Mock Exam | MEDINTELECT Academy</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo" onclick="showHome()">
+        <span class="logo-icon">🩺</span>
+        <div>
+          <strong>MEDINTELECT</strong>
+          <span>Renal Physiology</span>
+        </div>
+      </div>
+      <nav class="nav">
+        <button class="nav-btn" onclick="showHome()">Home</button>
+        <button class="nav-btn" onclick="showDashboard()">Dashboard</button>
+        <button class="nav-btn" onclick="showReview()">Review</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HOME / LANDING -->
+    <section id="home" class="section active">
+      <div class="hero">
+        <h1>Renal Physiology<br><span>Mock Exam</span></h1>
+        <p class="subtitle">Based on Dr. Onwe Lecture Notes & Area of Concentration</p>
+        <p class="desc">Practice MCQs, short-answer objectives, high-probability questions and full AOC essays. Your attempts are recorded so you can track progress and review answers later.</p>
+        
+        <div style="margin-bottom: 1.2rem;">
+          <button class="btn primary" id="installBtn" onclick="installApp()" style="display:none; gap:0.5rem; align-items:center;">
+            📲 Install App
+          </button>
+        </div>
+
+        <div class="stats-bar" id="quickStats">
+          <!-- Filled by JS -->
+        </div>
+
+        <div class="mode-grid">
+          <div class="mode-card" onclick="startSection('mcq')">
+            <div class="mode-icon">✅</div>
+            <h3>MCQs</h3>
+            <p>12 multiple-choice questions with instant scoring</p>
+            <span class="badge" id="mcqBadge">0/12 attempted</span>
+          </div>
+          <div class="mode-card" onclick="startSection('objective')">
+            <div class="mode-icon">📝</div>
+            <h3>Objective</h3>
+            <p>20 short-answer questions (type & check)</p>
+            <span class="badge" id="objBadge">0/20 attempted</span>
+          </div>
+          <div class="mode-card" onclick="startSection('highProb')">
+            <div class="mode-icon">🎯</div>
+            <h3>High Probability</h3>
+            <p>8 frequently asked questions</p>
+            <span class="badge" id="hpBadge">0/8 attempted</span>
+          </div>
+          <div class="mode-card" onclick="startSection('aoc')">
+            <div class="mode-icon">📖</div>
+            <h3>Area of Concentration</h3>
+            <p>5 essay-style AOC questions</p>
+            <span class="badge" id="aocBadge">0/5 attempted</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ SECTION -->
+    <section id="quiz" class="section">
+      <div class="quiz-header">
+        <button class="back-btn" onclick="showHome()">← Back</button>
+        <div class="quiz-meta">
+          <span id="sectionTitle">MCQs</span>
+          <span id="progressText">Question 1 of 12</span>
+        </div>
+        <div class="score-pill" id="liveScore">Score: 0</div>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div class="question-card" id="questionCard">
+        <!-- Filled dynamically -->
+      </div>
+
+      <div class="quiz-actions" id="quizActions">
+        <!-- Buttons filled by JS -->
+      </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="section">
+      <div class="page-header">
+        <h2>Your Progress Dashboard</h2>
+        <button class="btn secondary" onclick="resetProgress()">Reset All Progress</button>
+      </div>
+      
+      <div class="dashboard-grid" id="dashboardContent">
+        <!-- Filled by JS -->
+      </div>
+    </section>
+
+    <!-- REVIEW MODE -->
+    <section id="review" class="section">
+      <div class="page-header">
+        <h2>Review Answers</h2>
+        <p>See every question you have attempted, your response, and the model answer.</p>
+      </div>
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all" onclick="filterReview('all')">All</button>
+        <button class="filter-btn" data-filter="mcq" onclick="filterReview('mcq')">MCQs</button>
+        <button class="filter-btn" data-filter="objective" onclick="filterReview('objective')">Objective</button>
+        <button class="filter-btn" data-filter="highProb" onclick="filterReview('highProb')">High Prob</button>
+        <button class="filter-btn" data-filter="aoc" onclick="filterReview('aoc')">AOC</button>
+        <button class="filter-btn" data-filter="failed" onclick="filterReview('failed')">Failed Only</button>
+      </div>
+      <div id="reviewList" class="review-list">
+        <!-- Filled by JS -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© MEDINTELECT Academy · Based on Dr. Onwe Series · For educational purposes</p>
+      <p class="small">Prepared by Sen. Chima Chimdindu Macdonald · Progress is stored locally in your browser</p>
+    </div>
+  </footer>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // Register service worker for offline / installable app
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('Service Worker registered:', reg.scope))
+          .catch(err => console.log('SW registration failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "Renal Physiology Mock Exam",
+  "short_name": "Renal Exam",
+  "description": "MEDINTELECT Academy - Renal Physiology mock exam based on Dr. Onwe lecture notes. Practice MCQs, objectives, high-probability questions and AOC essays with progress tracking.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b4f6c",
+  "theme_color": "#0b4f6c",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "medical"],
+  "lang": "en"
+}
